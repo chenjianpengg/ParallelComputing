@@ -1,0 +1,19 @@
+parallel_computing:
+  datasource:
+    host: localhost
+    port: 3306
+    database: parallel_computing
+    username: root
+    password: '041103'
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  redis:
+    host: localhost
+    port: 6379
+    database: 3
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 5
+        min-idle: 0
+        max-wait: 1000ms

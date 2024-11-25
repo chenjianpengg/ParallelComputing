@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://${parallel_computing.datasource.host}:${parallel_computing.datasource.port}/${parallel_computing.datasource.database}
+    driver-class-name: ${parallel_computing.datasource.driver-class-name}
+    username: ${parallel_computing.datasource.username}
+    password: ${parallel_computing.datasource.password}
+
+  data:
+    redis:
+      host: ${parallel_computing.redis.host}
+      port: ${parallel_computing.redis.port}
+      password:
+      database: ${parallel_computing.redis.database}
+      lettuce:
+        pool:
+          max-active: ${parallel_computing.redis.lettuce.pool.max-active}
+          max-idle: ${parallel_computing.redis.lettuce.pool.max-idle}
+          min-idle: ${parallel_computing.redis.lettuce.pool.min-idle}
+          max-wait: ${parallel_computing.redis.lettuce.pool.max-wait}
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true   # 规整页码范围
+  support-methods-arguments: true   # 规整方法参数获取
+
+## 设置debug可以打印Sql语句
+logging:
+  level:
+    com.cjp.db:
+      mapper: debug
+      service: info
+      controller: info
+

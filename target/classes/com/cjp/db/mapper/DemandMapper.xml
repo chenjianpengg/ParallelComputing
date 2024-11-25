@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cjp.db.mapper.DemandMapper">
+
+    <update id="update">
+        update demand
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="companyId != null">companyId = #{companyId},</if>
+            <if test="budget != null">budget = #{budget},</if>
+            <if test="deadline != null">deadline = #{deadline},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="deleted != null">deleted = #{deleted},</if>
+            <if test="updatedTime != null">updatedTime = #{updatedTime},</if>
+        </set>
+        where id = #{id};
+    </update>
+</mapper>
